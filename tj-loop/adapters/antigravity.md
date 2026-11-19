@@ -13,9 +13,9 @@ Status: Arrangement A verified in part on Antigravity CLI 1.5.12 (2026-11-19): i
 
 ### B: an already-running interactive session
 
-- Worker: an interactive `agy` session started by the human in a terminal pane (tmux / Herdr).
+- Worker: an interactive `agy` session started by the human in a terminal pane (a multiplexer such as tmux, Herdr, or Orca).
 - Supervisor: any agent that can read the pane and send text to it.
-- Terminal multiplexer: required — the pane is the read/write channel. ACP cannot attach to an interactive session, and a session started by hand cannot be taken over by arrangement A.
+- Terminal multiplexer: required (e.g. tmux, Herdr, Orca) — the pane is the read/write channel. ACP cannot attach to an interactive session, and a session started by hand cannot be taken over by arrangement A.
 
 ## Mechanics
 

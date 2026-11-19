@@ -6,7 +6,7 @@ Status: not yet run end-to-end; written from the official Codex documentation (a
 
 - Worker: a Codex session (thread).
 - Supervisor: any agent that can run on a schedule (cron) and either speak JSON-RPC to the app-server (Arrangement A) or drive a terminal (Arrangement B).
-- Terminal multiplexer: not required for A; required for B (tmux or Herdr hosts the worker's TUI).
+- Terminal multiplexer: not required for A; required for B (a multiplexer such as tmux, Herdr, or Orca hosts the worker's TUI).
 - Note: this adapter also works on top of a worker that runs Codex's own /goal; the judgment stays outside either way.
 
 ## Mechanics
@@ -19,7 +19,7 @@ Status: not yet run end-to-end; written from the official Codex documentation (a
 - Write: `turn/start` starts a new turn on an idle thread (this is the resume instruction); `turn/steer` adds input to a running turn; `turn/interrupt` stops a turn.
 - Heartbeat: cron (or any scheduler) waking the supervisor.
 
-### B: plain TUI session in tmux or Herdr (terminal route)
+### B: plain TUI session in a terminal multiplexer (terminal route)
 
 Use when the worker is a standalone `codex` TUI session that no app-server hosts.
 

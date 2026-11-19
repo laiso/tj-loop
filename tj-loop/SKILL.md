@@ -29,10 +29,10 @@ description: Run a long task as a pair of sessions — a worker (Tom) and a supe
 Only the mechanics differ per environment: how the supervisor reads state, how it delivers an instruction, and where the heartbeat lives. Before starting, read the adapter for the worker's environment:
 
 - Claude Code — `adapters/claude-code.md` (native session messaging)
-- Codex — `adapters/codex.md` (app-server, or the tmux / Herdr terminal route)
+- Codex — `adapters/codex.md` (app-server, or a terminal route: tmux, Herdr, Orca, etc.)
 - OpenCode — `adapters/opencode.md` (server API)
 - Pi — `adapters/pi.md` (RPC)
-- Antigravity (agy) — `adapters/antigravity.md` (ACP, or the tmux / Herdr terminal route)
+- Antigravity (agy) — `adapters/antigravity.md` (ACP, or a terminal route: tmux, Herdr, Orca, etc.)
 
 ## Stopping
 
