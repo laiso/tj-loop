@@ -7,6 +7,8 @@ A supervisor/worker pair pattern for long-running coding-agent sessions.
 - **Tom** is the worker: a coding-agent session running a long task.
 - **Jerry** is the supervisor: a second session that wakes up on a heartbeat, reads Tom's state, and judges whether Tom is progressing or stalled. When Tom stalls, Jerry sends a resume instruction. When Tom is done, Jerry reports and stops.
 
+![How tj-loop works](assets/tj-loop-flow.png)
+
 ## How this differs from the Ralph loop
 
 In the Ralph loop, the outer script repeats the same prompt to a fresh session and makes no judgment. The goal is fixed.
