@@ -2,6 +2,14 @@
 
 OpenCode is client/server: the TUI is a client of the server, so a session a human is driving in the TUI is reachable through the API.
 
+## Arrangement
+
+- Worker: an OpenCode session served by `opencode serve`. A session a human drives in the TUI is the same session, because the TUI is a client of the server.
+- Supervisor: any agent that can make HTTP calls on a schedule.
+- Terminal multiplexer: not required.
+
+## Mechanics
+
 - Run (or reuse) `opencode serve` (default port 4096).
 - Read: `GET /api/session` (list), `GET /api/session/active`, `GET /api/session/{sessionID}/message` (timeline); or the SDK (`@opencode/client`: `client.session.*`, `client.event.subscribe()`). On 1.x: `GET /session/status` returns busy/idle per session.
 - Write: `POST /api/session/{sessionID}/prompt` (2.x) — a prompt sent to an idle session restarts its agent loop, which is the resume action. On 1.x: `POST /session/:id/prompt_async`.

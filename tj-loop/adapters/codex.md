@@ -2,6 +2,12 @@
 
 Codex has its own /goal (internal continuation judged by Codex itself). This adapter puts the judgment outside, and can sit on top of a /goal worker.
 
+## Arrangement
+
+- Worker: a Codex session (thread).
+- Supervisor: any agent that can run on a schedule (cron) and either speak JSON-RPC to the app-server (Arrangement A) or drive a terminal (Arrangement B).
+- Terminal multiplexer: not required for A; required for B (tmux or Herdr hosts the worker's TUI).
+
 ## Arrangement A: app-server (native read/write)
 
 - Run the worker's threads on `codex app-server` (default Unix socket; the WebSocket transport is documented as experimental). A human-facing TUI can attach to the same server with `codex --remote <addr>`, so the human and the supervisor share the worker.
