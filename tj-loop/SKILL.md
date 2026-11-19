@@ -1,6 +1,6 @@
 ---
 name: tj-loop
-description: Run a long task as a pair of sessions — a worker (Tom) and a supervisor (Jerry). The supervisor wakes up periodically, reads the worker's state, judges progress, and sends a resume instruction when the worker stalls. Works with Claude Code natively, and with Codex, OpenCode, and Pi through the adapter files in this directory. Use when a long autonomous run needs to be kept going.
+description: Run a long task as a pair of sessions — a worker (Tom) and a supervisor (Jerry). The supervisor wakes up periodically, reads the worker's state, judges progress, and sends a resume instruction when the worker stalls. Works with Claude Code natively, and with Codex, OpenCode, Pi, and Antigravity through the adapter files in this directory. Use when a long autonomous run needs to be kept going.
 ---
 
 # tj-loop — Session Supervisor
@@ -32,6 +32,7 @@ Only the mechanics differ per environment: how the supervisor reads state, how i
 - Codex — `adapters/codex.md` (app-server, or the tmux / Herdr terminal route)
 - OpenCode — `adapters/opencode.md` (server API)
 - Pi — `adapters/pi.md` (RPC)
+- Antigravity (agy) — `adapters/antigravity.md` (ACP, or the tmux / Herdr terminal route)
 
 ## Stopping
 
