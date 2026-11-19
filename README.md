@@ -26,7 +26,7 @@ Everything else (goal files, reports, dashboards, scoring gates) is an implement
 
 ## For agents
 
-The instructions a supervisor session follows live in [SKILL.md](SKILL.md), the session-supervisor skill for Claude Code.
+The instructions a supervisor session follows live in the tj-loop skill: [tj-loop/SKILL.md](tj-loop/SKILL.md) holds the common rules, and the per-environment adapters sit beside it in the same directory. To install, copy the `tj-loop` directory into your skills directory (for Claude Code, `~/.claude/skills/`).
 
 ## References
 
