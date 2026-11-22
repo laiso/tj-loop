@@ -27,7 +27,7 @@ description: Run a long task as a pair of sessions — a worker (Tom) and a supe
 
 ## One supervisor, several workers
 
-One supervisor can watch several workers. Verified with two workers; resume to a stalled worker and more than two workers are not yet verified.
+One supervisor can watch several workers.
 
 - The common rules apply to each worker separately. Each worker has its own progress file; the supervisor judges each one on its own, and a resume goes to the worker that stalled, not to all of them.
 - On each wake-up, read every worker's state. When the workers run at the same pace, one check can cover them all; when they run at different paces, check each on its own.
