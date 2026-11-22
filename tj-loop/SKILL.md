@@ -9,6 +9,7 @@ description: Run a long task as a pair of sessions — a worker (Tom) and a supe
 
 - Worker session (Tom): runs the task.
 - Supervisor session (Jerry): checks the worker's state on a fixed interval, judges progress, and intervenes only when needed.
+- One supervisor can watch several workers; see "One supervisor, several workers" below.
 
 ## Common rules (all environments)
 
@@ -23,6 +24,17 @@ description: Run a long task as a pair of sessions — a worker (Tom) and a supe
   - State cannot be read (the worker session is gone or unreachable): do not treat it as Done. Hand it to the human.
 - One resume instruction per stall. Never resend for the same stall. If a resume does not move it, hand it to the human.
 - Handing to the human means: report in the supervisor session's own output, and record the handoff in the supervisor log.
+
+## One supervisor, several workers
+
+One supervisor can watch several workers. Verified with two workers; resume to a stalled worker and more than two workers are not yet verified.
+
+- The common rules apply to each worker separately. Each worker has its own progress file; the supervisor judges each one on its own, and a resume goes to the worker that stalled, not to all of them.
+- On each wake-up, read every worker's state. When the workers run at the same pace, one check can cover them all; when they run at different paces, check each on its own.
+- How to deliver a result depends on how the worker is waiting. A worker that polls on a timer takes plain text. A worker showing a menu needs the supervisor to read the pane first, pick the menu item, then send the details. Read the pane before sending: the form of the reply must match the worker's waiting shape.
+- A step the workers share that cannot run twice at once (for example a tool that accepts one run at a time) makes the workers run one after another at that step. Do not work around the tool's own rule: queue the workers instead, and tell the waiting worker to hold until its turn.
+- The supervisor log records one line per judgment or intervention, and names the worker in each line.
+- Stopping: stop the heartbeat first, then stop each worker that is still running.
 
 ## Adapters
 
