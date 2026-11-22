@@ -1,8 +1,8 @@
-# tj-loop — Tom and Jerry
+# tj-loop
 
 ![Jerry keeping Tom moving](assets/tom-and-jerry.gif)
 
-A supervisor/worker pair pattern for long-running coding-agent sessions.
+A mechanism for keeping coding agents going: one supervisor watches one or more workers and resumes a worker when it stalls.
 
 - **Tom** is the worker: a coding-agent session running a long task.
 - **Jerry** is the supervisor: a second session that wakes up on a heartbeat, reads Tom's state, and judges whether Tom is progressing or stalled. When Tom stalls, Jerry sends a resume instruction. When Tom is done, Jerry reports and stops.
